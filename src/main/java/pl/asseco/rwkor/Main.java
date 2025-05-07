@@ -14,17 +14,20 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JakartaXmlBindAnnotationModule());
+
         try {
+            // Parse JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JakartaXmlBindAnnotationModule());
             var url = Main.class.getResource("/K01.json");
             var komunikat = objectMapper.readValue(url, K01Typ.class);
+
+            // Build XML
             var jaxbContext = JAXBContext.newInstance(komunikat.getClass());
             var jaxbMarshaller = jaxbContext.createMarshaller();
             JAXBElement<KomunikatTyp> jaxbElement = new ObjectFactory().createKomunikat(komunikat);
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.marshal(jaxbElement, System.out);
-            System.out.println(komunikat);
         } catch (IOException | JAXBException e) {
             throw new RuntimeException(e);
         }
