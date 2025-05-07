@@ -1,0 +1,2694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://zus.pl/schematy/b2bior/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kom="http://zus.pl/schematy/b2bior/" version="1.2">
+	<xs:element name="Komunikat" type="kom:KomunikatTyp"/>
+	<xs:simpleType name="BiegWnioskuTyp">
+		<xs:annotation>
+			<xs:documentation>Bieg wniosku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataTyp">
+		<xs:annotation>
+			<xs:documentation>Data</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="DecyzjaTyp">
+		<xs:annotation>
+			<xs:documentation>Decyzja o ustaleniu bądź odmowie ustalenia zbiegu świadczenia z rentą rodzinną</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Odmowa"/>
+			<xs:enumeration value="Ustalenie"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentyfikatorBankuTyp">
+		<xs:annotation>
+			<xs:documentation>Międzynarodowy identyfikator banku w formacie BIC/SWIFT</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ImieTyp">
+		<xs:annotation>
+			<xs:documentation>Imię</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="22"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JednostkaOrganuRentowegoTyp">
+		<xs:annotation>
+			<xs:documentation>Jednostka organu rentowego</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="4"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KodBleduTyp">
+		<xs:annotation>
+			<xs:documentation>Kod błędu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KodIdentBankuMacierzystegoTyp">
+		<xs:annotation>
+			<xs:documentation>Kod identyfikacyjny banku macierzystego w USA</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KodPocztowyTyp">
+		<xs:annotation>
+			<xs:documentation>Kod pocztowy</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KodRodzajuDodatkuTyp">
+		<xs:annotation>
+			<xs:documentation>Kod rodzaju dodatku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="7"/>
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KwotaTyp">
+		<xs:annotation>
+			<xs:documentation>Typ danych odpowiadający liczbie reprezentującej kwotę</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="[\d]+\.[\d]{2}"/>
+			<xs:fractionDigits value="2"/>
+			<xs:totalDigits value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LiczbaTyp">
+		<xs:annotation>
+			<xs:documentation>Liczba</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0123456789]*"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MiedzynarodowyNrRachunkuTyp">
+		<xs:annotation>
+			<xs:documentation>Międzynarodowy numer rachunku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MiejsceWystapieniaTyp">
+		<xs:annotation>
+			<xs:documentation>Miejsce wystąpienia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MiejscowoscTyp">
+		<xs:annotation>
+			<xs:documentation>Miejscowość</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="56"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NazwaAdresBankuTyp">
+		<xs:annotation>
+			<xs:documentation>Nazwa i adres banku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NazwaPanstwaTyp">
+		<xs:annotation>
+			<xs:documentation>Nazwa państwa</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="42"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NazwiskoTyp">
+		<xs:annotation>
+			<xs:documentation>Nazwisko</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="31"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NrDowoduTozsamosciTyp">
+		<xs:annotation>
+			<xs:documentation>Numer dowodu tożsamości</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="15"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NrRachunkuUSATyp">
+		<xs:annotation>
+			<xs:documentation>Numer rachunku USA</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="39"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumerDomuLokaluTyp">
+		<xs:annotation>
+			<xs:documentation>Numer domu / lokalu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="12"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumerRachunkuTyp">
+		<xs:annotation>
+			<xs:documentation>Numer rachunku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="26"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumerSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Numer świadczenia </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrganRentowyTyp">
+		<xs:annotation>
+			<xs:documentation>Organ rentowy</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PESELTyp">
+		<xs:annotation>
+			<xs:documentation>Numer PESEL</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="|\d{11}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PowodZadaniaTyp">
+		<xs:annotation>
+			<xs:documentation>Powód żądania</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PowodZmianySwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Powód zmiany świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PowodZmianyTyp">
+		<xs:annotation>
+			<xs:documentation>Powód zmiany</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PowodZmianyZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Powód zmiany zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcentTyp">
+		<xs:annotation>
+			<xs:documentation>Typ danych reprezentujący procent</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="100"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProporcjaSwiadczeniaWZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Możliwa proporcja świadczenia - w skład jakiego zbiegu może wchodzić dane świadczenie /składnik</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajAdresuTyp">
+		<xs:annotation>
+			<xs:documentation>Rodzaj adresu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adres"/>
+			<xs:enumeration value="Poste restante"/>
+			<xs:enumeration value="Skrytka pocztowa"/>
+			<xs:enumeration value="Przegródka pocztowa"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajDokumentuTyp">
+		<xs:annotation>
+			<xs:documentation>Rodzaj dokumentu tożsamości</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajRachunkuUsaTyp">
+		<xs:annotation>
+			<xs:documentation>Rodzaj rachunku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation>bieżący</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="O">
+				<xs:annotation>
+					<xs:documentation>oszczędnościowy</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajSwiadczeniaDlaZbieguWdowiegoTyp">
+		<xs:annotation>
+			<xs:documentation>Rodzaj świadczenia dla zbiegu wdowiego</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Rodzaj świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="7"/>
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SposobZmniejszeniaSkladnikaWSwiadczeniuTyp">
+		<xs:annotation>
+			<xs:documentation>Sposób zmniejszenia składnika w wypłacanym procencie świadczenia w zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StanPrawaTyp">
+		<xs:annotation>
+			<xs:documentation>Stan prawa do świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StanSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Stan świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StopienPokrewienstwaTyp">
+		<xs:annotation>
+			<xs:documentation>Stopien pokrewieństwa</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\d]*"/>
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StronaWyplacajacaSwiadczenieTyp">
+		<xs:annotation>
+			<xs:documentation>Strona umowy międzynarodowej wypłacająca świadczenie</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="42"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SygnaturaTyp">
+		<xs:annotation>
+			<xs:documentation>Sygnatura</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolDodatkuTyp">
+		<xs:annotation>
+			<xs:documentation>Symbol dodatku</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolGrupyFinansowaniaPomniejszeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Symbol grupy finansowania / pomniejszenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolKomunikatuTyp">
+		<xs:annotation>
+			<xs:documentation>Symbol komunikatu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="K00">
+				<xs:annotation>
+					<xs:documentation>Informacja o wniosku o ustalenie zbiegu świadczeń z rentą rodzinną ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K01">
+				<xs:annotation>
+					<xs:documentation>Żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K02">
+				<xs:annotation>
+					<xs:documentation>Odpowiedź na żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K03">
+				<xs:annotation>
+					<xs:documentation>Informacja o rozstrzygnięciu: odmowie lub ustaleniu zbiegu świadczenia z rentą rodzinną</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K04">
+				<xs:annotation>
+					<xs:documentation>Informacja o ustaniu prawa lub zmianie wysokości świadczeń</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K05">
+				<xs:annotation>
+					<xs:documentation>Ponaglenie dotyczące potwierdzenia występowania świadczeń w organie rentowym oraz jego wysokości</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="K06">
+				<xs:annotation>
+					<xs:documentation>Informacja o zmianie ustalonego zbiegu świadczeń z rentą rodzinną</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KPB">
+				<xs:annotation>
+					<xs:documentation>Informacja o potwierdzeniu przyjęcia komunikatu albo błędach uniemożliwiających jego przyjęcie</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Symbol świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolWariantuZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Symbol wariantu zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TakNieTyp">
+		<xs:annotation>
+			<xs:documentation>Tak lub Nie</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Tak"/>
+			<xs:enumeration value="Nie"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst200Typ">
+		<xs:annotation>
+			<xs:documentation>Tekst o długości maksymalnie 200 znaków</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="200"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tekst20Typ">
+		<xs:annotation>
+			<xs:documentation>Tekst o długości maksymalnie 20 znaków</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TelefonTyp">
+		<xs:annotation>
+			<xs:documentation>Numer telefonu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[+]?[0-9 -]{0,14}"/>
+			<xs:maxLength value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TerminPlatnosciTyp">
+		<xs:annotation>
+			<xs:documentation>Termin płatności</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{1,2}"/>
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrybPotwierdzeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Tryb potwierdzenia</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrybUstalaniaZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Tryb ustalania zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UlicaTyp">
+		<xs:annotation>
+			<xs:documentation>Ulica</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UUIDTyp">
+		<xs:annotation>
+			<xs:documentation>Identyfikator</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WariantZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Wariant zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WersjaSchematuTyp">
+		<xs:annotation>
+			<xs:documentation>Wersja schematu</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AdresKorespondencyjnyTyp">
+		<xs:annotation>
+			<xs:documentation>Adres korespondencyjny</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RodzajAdresu" type="kom:RodzajAdresuTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj adresu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ulica" type="kom:UlicaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Ulica</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerDomu" type="kom:NumerDomuLokaluTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer domu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerLokalu" type="kom:NumerDomuLokaluTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer lokalu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KodPocztowy" type="kom:KodPocztowyTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod pocztowy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Miejscowosc" type="kom:MiejscowoscTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Miejscowość</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NazwaPanstwa" type="kom:NazwaPanstwaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwa państwa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdresZamieszkaniaBezPanstwaTyp">
+		<xs:annotation>
+			<xs:documentation>Adres zamieszkania (bez państwa)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Ulica" type="kom:UlicaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Ulica</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerDomu" type="kom:NumerDomuLokaluTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer domu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerLokalu" type="kom:NumerDomuLokaluTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer lokalu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KodPocztowy" type="kom:KodPocztowyTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod pocztowy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Miejscowosc" type="kom:MiejscowoscTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Miejscowość</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdresZamieszkaniaTyp">
+		<xs:annotation>
+			<xs:documentation>Adres zamieszkania</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:AdresZamieszkaniaBezPanstwaTyp">
+				<xs:sequence>
+					<xs:element name="NazwaPanstwa" type="kom:NazwaPanstwaTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nazwa państwa</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BladTyp">
+		<xs:annotation>
+			<xs:documentation>Błąd uniemożliwiający przyjęcie komunikatu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Kod" type="kom:KodBleduTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod błędu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MiejsceWystapienia" type="kom:MiejsceWystapieniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Miejsce wystąpienia błędu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DaneEwidencyjneWnioskuTyp">
+		<xs:annotation>
+			<xs:documentation>Dane ewidencyjne wniosku</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DataZgloszenia" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data zgłoszenia wniosku o ustalenie zbiegu świadczeń z rentą rodzinną ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataWplywu" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wpływu wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BiegWniosku" type="kom:BiegWnioskuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy nadano bieg wnioskowi w organie, do którego wniosek wpłynął</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataNadaniaBiegu" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data, w której ORZ nadał bieg wnioskowi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataUmorzenia" type="kom:DataTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data, w której ORZ umorzył postępowanie w przedmiocie wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DaneTrybuPotwierdzeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Dane trybu potwierdzenia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TrybPotwierdzenia" type="kom:TrybPotwierdzeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tryb potwierdzenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PowodZmiany" type="kom:PowodZmianyTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Powód zmiany</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataZmianyZgonu" type="kom:DataTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data zmiany / zgonu - dta, od której zmienił się potwierdzany stan występowania i wysokości świadczeń</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DaneZadaniaTyp">
+		<xs:annotation>
+			<xs:documentation>Informacje dotyczące żądania</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DataWyslaniaZadania" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dzień, w którym wysłano żądanie K1</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NiedotrzymanyTerminOdpowiedziNaZadanie" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dzień, w którym upłynął termin dla odpowiedzi K02, przy braku ponaglenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NiedotrzymanyTerminOdpowiedziNaPonaglenie" type="kom:DataTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dzień, w którym upłynął termin dla odpowiedzi K02, po wysłaniu pierwszego ponaglenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DecyzjaPrzyjmujacegoTyp">
+		<xs:annotation>
+			<xs:documentation>Decyzja przyjmującego</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CzyPrzyjetoKomunikat" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy przyjęto komunikat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ListaBledow" type="kom:ListaBledowTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lista błędów uniemożliwiających przyjęcie komunikatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DodatekWyplacanyZeSwiadczeniemTyp">
+		<xs:annotation>
+			<xs:documentation>Dodatek wypłacany wraz ze świadczeniem</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="KodRodzaju" type="kom:KodRodzajuDodatkuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod rodzaju dodatku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Symbol" type="kom:SymbolDodatkuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol dodatku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Wysokosc" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość dodatku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataPoczatkuObowiazywania" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data początku obowiązywania dodatku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataKoncaObowiazywania" type="kom:DataTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data końca obowiązywania dodatku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolGrupyFinansowaniaPomniejszenia" type="kom:SymbolGrupyFinansowaniaPomniejszeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol grupy finansowania / pomniejszenia świadczeń wchodzących w skład zbiegu wdowiego</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DzienLubOkresTyp">
+		<xs:annotation>
+			<xs:documentation>Wymagany dzień albo okres potwierdzenia</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="OkresPotwierdzenia" type="kom:OkresPotwierdzeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Okres potwierdzenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dzien" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data zdarzenia. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="K00Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K00</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK00Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK00Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K01Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K01</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK01Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK01Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K02Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K02</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK02Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK02Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K03Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K03</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK03Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK03Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K04Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K04</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK04Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK04Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K05Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K05</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK05Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK05Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="K06Typ">
+		<xs:annotation>
+			<xs:documentation>Komunikat K06</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekK06Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescK06Typ" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Komunikat" mixed="true">
+		<xs:sequence/>
+		<xs:attribute name="kodowanie" use="optional" fixed="base64" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="KomunikatTyp" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Komunikat</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="KPBTyp">
+		<xs:annotation>
+			<xs:documentation>Komunikat KPB</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:KomunikatTyp">
+				<xs:sequence>
+					<xs:element name="Naglowek" type="kom:NaglowekKPBTyp" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Nagłówek komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Tresc" type="kom:TrescKPBTyp" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Treść komunikatu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListaBledowTyp">
+		<xs:annotation>
+			<xs:documentation>Lista błędów uniemożliwiających przekazanie komunikatu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Blad" type="kom:BladTyp" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Błąd uniemożliwiający przyjęcie komunikatu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaAdresPlTyp">
+		<xs:annotation>
+			<xs:documentation>Wnioskodawca zaznaczył we wniosku ERWD pole 'adres w Polsce', w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Zaznaczono" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zaznaczono</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Tak </xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:TakNieTyp">
+						<xs:enumeration value="Tak"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:group ref="kom:NaAdreP1Wybor" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK00Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K00</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K00"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K00, którym zgłoszono nadanie biegu wnioskowi, którego zakończenie biegu jest zgłaszane niniejszym komunikatem.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK01Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K01</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K01"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K00, rozpoczynającego bieg wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK02Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K02</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K02"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDOdpowiedzi" type="kom:UUIDOdpowiedziK02" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K01, na który odpowiada niniejszy komunikat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K00, rozpoczynającego bieg wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK03Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K03</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K03"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K0= rozpoczynającego bieg wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK04Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K04</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K04"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K00, którym zgłoszono nadanie biegu wnioskowi ERWD i na postawie którego ustalono zbieg wdowi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK05Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K05</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K05"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDOdpowiedzi" type="kom:UUIDOdpowiedziK05" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K01, na który nie otrzymano terminowej odpowiedzi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K0= rozpoczynającego bieg wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekK06Typ">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu K06</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K06"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDRK00" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu K00, którym zgłoszono nadanie biegu wnioskowi ERWD, na postawie którego ustalono zbieg wdowi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaglowekKPBTyp">
+		<xs:annotation>
+			<xs:documentation>Nagłówek komunikatu KPB</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="KPB"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WersjaSchematu" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wersja schematu XSD dla komunikatu</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Wersja schematu XSD</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:WersjaSchematuTyp">
+						<xs:enumeration value="1.2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UUIDOdpowiedzi" type="kom:UUIDOdpowiedziKPB" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu, którego przyjęcie lub odmowę przyjęcia stwierdza niniejszy komunikat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nadawca" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadawca (symbol organu rentowego stwierdzającego przyjęcie lub odmowę przyjęcia komunikatu)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresat" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adresat (symbol organu rentowego oczekującego na przyjęcie lub odmowę przyjęcia komunikatu)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaRachunekPlTyp">
+		<xs:annotation>
+			<xs:documentation>Wnioskodawca zaznaczył we wniosku ERWD pole 'w Polsce na rachunek bankowy', w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Zaznaczono" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zaznaczono</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Tak</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:TakNieTyp">
+						<xs:enumeration value="Tak"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="NrRachunku" type="kom:NumerRachunkuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer rachunku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaRachunekPlZamieszkalegoZagranicaTyp">
+		<xs:annotation>
+			<xs:documentation>Na rachunek polski zamieszkałego za granicą</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:NaRachunekPlTyp">
+				<xs:sequence>
+					<xs:element name="ImieINazwiskoWlasciciela" type="kom:Tekst200Typ" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Imię i nazwisko właściciela rachunku osoby upoważnionej do odbioru świadczenia</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PESEL" type="kom:PESELTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>PESEL osoby upoważnionej</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RodzajDokumentu" type="kom:RodzajDokumentuTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Rodzaj dokumentu tożsamości</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SeriaINumerDokumentu" type="kom:NrDowoduTozsamosciTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Seria i numer dokumentu tożsamości</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NaRachunekUSATyp">
+		<xs:annotation>
+			<xs:documentation>Wnioskodawca zaznaczył we wniosku ERWD pole 'za granicę – do USA na rachunek bankowy' </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Zaznaczono" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zaznaczono</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Tak</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:TakNieTyp">
+						<xs:enumeration value="Tak"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="NrRachunku" type="kom:NrRachunkuUSATyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer rachunku USA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NazwaAdresBankuMacierzystego" type="kom:NazwaAdresBankuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pełna nazwa i adres banku macierzystego w USA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KodIdentBankuMacierzystego" type="kom:KodIdentBankuMacierzystegoTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod identyfikacyjny banku macierzystego w USA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajRachunku" type="kom:RodzajRachunkuUsaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj rachunku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NazwaAdresBankuPosredniczacego" type="kom:NazwaAdresBankuTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Pełna nazwa i adres banku pośredniczacego w USA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NaRachunekZagranicaTyp">
+		<xs:annotation>
+			<xs:documentation>Wnioskodawca zaznaczył we wniosku ERWD pole 'za granicę – na rachunek bankowy (oprócz USA)' </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Zaznaczono" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zaznaczono</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Tak </xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:TakNieTyp">
+						<xs:enumeration value="Tak"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MiedzynarodowyNrRachunku" type="kom:MiedzynarodowyNrRachunkuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Międzynarodowy numer rachunku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NazwaAdresBanku" type="kom:NazwaAdresBankuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwa i adres banku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IdentyfikatorBanku" type="kom:IdentyfikatorBankuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Międzynarodowy identyfikator banku w formacie BIC/SWIFT</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OkresObowiazywaniaWysokosciIStanuSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Okres obowiązywania wysokości i stanu świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DataOd" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data początku okresu obowiązywania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataDo" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data końca okresu obowiązywania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WariantZbieguSwiadczen" type="kom:WariantZbieguSwiadczenTyp" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Wariant zbiegu świadczeń</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OkresPotwierdzeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Okres potwierdzenia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DataOd" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Początek okresu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataDo" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Koniec okresu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OsobaFizycznaTyp">
+		<xs:annotation>
+			<xs:documentation>Osoba fizyczna</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PESEL" type="kom:PESELTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PESEL</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajDokumentu" type="kom:RodzajDokumentuTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj dokumentu tożsamości</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SeriaINumerDokumentu" type="kom:NrDowoduTozsamosciTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Seria i numer dokument tożsamości (w przypadku gdy brak PESEL)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Imie" type="kom:ImieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Imię</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nazwisko" type="kom:NazwiskoTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwisko</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataUrodzenia" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data urodzenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OsobaFizycznaZTelefonemTyp">
+		<xs:annotation>
+			<xs:documentation>Osoba fizyczna z telefonem</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:OsobaFizycznaTyp">
+				<xs:sequence>
+					<xs:element name="NumerTelefonu" type="kom:TelefonTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Numer telefonu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OswiadczeniaWnioskodawcyTyp">
+		<xs:sequence>
+			<xs:element name="MamPrzyznanaRenteRodzinna" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD dla oświadczenia 'Mam przyznaną rentę rodzinną lub mam złożony wniosek o rentę rodzinną i oczekuję na decyzję w tej sprawie'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajInstytucjiRentaRodzinna" type="kom:RodzajInstytucjiTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lista zaznaczonych we wniosku ERWD organów rentowych, w których wnioskodawca ma przyznaną rentę rodzinną lub ma złożony wniosek o nią</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerSwiadczeniaRentaRodzinna" type="kom:Tekst200Typ" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer świadczenia - renta rodzinna</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MamPrzyznanaInneSwiadczenie" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD przy oświadczeniu 'Mam przyznane lub złożyłam/ złożyłem wniosek o inne świadczenie'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajInstytucjiInneSwiadczenie" type="kom:RodzajInstytucjiTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Lista zaznaczonych we wniosku ERWD organów rentowych, w których wnioskodawca ma przyznane inne świadczenie lub złożył wniosek o inne świadczenie.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerSwiadczeniaInneSwiadczenie" type="kom:Tekst200Typ" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer świadczenia - inne świadczenie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CzyUstalonePrawaDoSwiadczeniaZZagranicy" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD pole przy oświadczeniu: jeżeli zaznaczył 'mam ustalone prawo do świadczenia z zagranicznej instytucji (…)' wtedy Tak, jeżeli zaznaczył 'nie mam ustalonego prawa do żadnego świadczenia z zagranicznej instytucji (...)' wtedy nie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneSwiadczeniaZagranica" type="kom:Tekst200Typ" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dodatkowa podana we wniosku ERWD przy oświadczeniu 'mam ustalone prawo do świadczenia z zagranicznej instytucji (…)'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MamZlozonyWniosekOSwiadczenieZZagranicy" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole przy oświadczeniu 'mam złożony wniosek o świadczenie z zagranicznej instytucji (…)'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneWnioskowanegoSwiadczeniaZagranica" type="kom:Tekst200Typ" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dodatkowa podana we wniosku ERWD przy oświadczeniu 'mam złożony wniosek o świadczenie z zagranicznej instytucji (…)'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DoSmierciPozostawalismyWeWspolnosci" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD przy oświadczeniu 'Do dnia śmierci współmałżonka pozostawaliśmy we wspólności małżeńskiej'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JestemObecnieWZwiazkuMalzenskim" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD przy oświadczeniu 'Jestem obecnie w związku małżeńskim'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RodzajInstytucjiTyp">
+		<xs:annotation>
+			<xs:documentation>Lista zaznaczonych we wniosku ERWD organów rentowych, w których wnioskodawca ma przyznaną rentę rodzinną lub ma złożony wniosek o nią</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ZUS" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>ZUS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KRUS" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>KRUS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZERMSWiA" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>ZER MSWiA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BESW" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>BESW</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEBialystok" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Białystok</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEKrakow" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Kraków</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBERzeszow" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Rzeszów</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEBydgoszcz" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Bydgoszcz</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBELublin" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Lublin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBESzczecin" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Szczecin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEGdansk" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Gdańsk</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBELodz" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Łódź</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEWarszawa" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Warszawa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEKatowice" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Katowice</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEOlsztyn" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Olsztyn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEWroclaw" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Wrocław</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEKielce" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Kielce</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEPoznan" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Poznań</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WBEZielonaGora" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>WBE Zielona Góra</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SkladnikSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Składniki świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="KodSkladnikaSwiadczenia" type="kom:Tekst20Typ" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol nadawany przez ORŚ, nie-słownikowany, opisujący część świadczenia jednoznacznie określający grupę finansowania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolGrupyFinansowaniaPomniejszenia" type="kom:SymbolGrupyFinansowaniaPomniejszeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol grupy finansowania / pomniejszenia świadczeń wchodzących w skład zbiegu wdowiego – grupa przypisana do składnika</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SposobZmniejszeniaSkladnikaWSwiadczeniu" type="kom:SposobZmniejszeniaSkladnikaWSwiadczeniuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sposób zmniejszenia składnika w wypłacanym procencie świadczenia w zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSkladnika" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość składnika brutto przed zmniejszeniem /zawieszeniem z tytułu przychodów. W przypadku składników ustalonych przez komórkę RUM w wariancie „zagranicznym”, zagranicznych, wysokość składnika brutto po zastosowaniu wskaźnika proratyzacji przed zmniejszeniem/zawieszeniem z tytułu przychodów. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSkladnikaWyplacanegoWXProc" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość składnika brutto bez dodatków przed zmniejszeniem /zawieszeniem z tytułu przychodów, w ramach świadczenia wypłacanego w X%. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSkladnikaWyplacanegoWXProcPoZmniejszeniu" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość składnika brutto przed zmniejszeniem /zawieszeniem z tytułu przychodów, w ramach świadczenia wypłacanego w X%, po zmniejszeniu z powodu przekroczenia 3 x min ER. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SwiadczeniaPozostajaceWZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Świadczenia pozostające w zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Okres" type="kom:OkresObowiazywaniaWysokosciIStanuSwiadczeniaTyp" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Okres obowiązywania wysokości i stanu świadczenia </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SwiadczeniePozostajaceWZbieguTyp">
+		<xs:annotation>
+			<xs:documentation>Świadczenie pozostające w zbiegu</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ wypłacający świadczenie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JednostkaORS" type="kom:JednostkaOrganuRentowegoTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Jednostka ORŚ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajSwiadczenia" type="kom:RodzajSwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RodzajSwiadczeniaDlaZbieguWdowiego" type="kom:RodzajSwiadczeniaDlaZbieguWdowiegoTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj świadczenia dla zbiegu wdowiego</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolSwiadczenia" type="kom:SymbolSwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerSwiadczenia" type="kom:NumerSwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TerminPlatnosci" type="kom:TerminPlatnosciTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Termin płatności</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StronaWyplacajacaSwiadczenie" type="kom:StronaWyplacajacaSwiadczenieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Strona umowy międzynarodowej wypłacająca świadczenie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProporcjaSwiadczenWZbiegu" type="kom:ProporcjaSwiadczeniaWZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>W skład jakiego zbiegu może wchodzić dane świadczenie/składnik</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneZmarlego" type="kom:OsobaFizycznaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane osoby, po której przyznano świadczenie (zmarłego)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataZgonu" type="kom:DataTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data zgonu osoby, po której przyznano świadczenie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StopienPokrewienstwa" type="kom:StopienPokrewienstwaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stopien pokrewieństwa osoby pobierającej świadczenie do osoby zmarłej</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolSwiadczeniaNadrzednego" type="kom:SymbolSwiadczeniaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol świadczenia nadrzędnego</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaBezDodatkow" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia /świadczeń wypłacanych brutto bez dodatków przed zmniejszeniem /zawieszeniem z tytułu przychodów. W przypadku świadczeń ustalonych przez komórkę RUM w wariancie „zagranicznym”, zagranicznych, wysokość świadczenia/świadczeń brutto po zastosowaniu wskaźnika proratyzacji bez dodatków przed zmniejszeniem/zawieszeniem z tytułu przychodów. 
+Jeśli w świadczeniu została przyznana dopłata do minimum to do wysokości brutto należy dodać kwotę dopłaty i wykazać jako niezależny składnik. 
+Jeśli do świadczenia ustalonego na podstawie umowy polsko-ukraińskiej, polsko-mołdawskiej lub polsko-białoruskiej zostało przyznane uzupełnienie umowne to również w kwocie brutto należy je wykazać jako niezależny składnik. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaZDodatkami" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia/ świadczeń wypłacanych brutto z dodatkami przed zmniejszeniem /zawieszeniem z tytułu przychodów. W przypadku świadczeń ustalonych przez komórkę RUM w wariancie „zagranicznym” z dodatkami przed zmniejszeniem/zawieszeniem z tytułu przychodów. 
+Jeśli w świadczeniu została przyznana dopłata do minimum to do wysokości brutto należy dodać kwotę dopłaty. 
+Jeśli do świadczenia ustalonego na podstawie umowy polsko-ukraińskiej, polsko-mołdawskiej lub polsko-białoruskiej zostało przyznane uzupełnienie umowne to również w kwocie brutto należy je wykazać. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StanPrawa" type="kom:StanPrawaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stan prawa</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StanSwiadczenia" type="kom:StanSwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Stan świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WyplacanyProcentSwiadczenia" type="kom:ProcentTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wypłacany procent świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LiczbaUprawnionych" type="kom:LiczbaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Liczba uprawnionych przy rencie rodzinnej</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CzyMozliwyZbiegWdowi" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy dana renta rodzinna może być wypłacana w „zbiegu wdowim” 100/15?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaBezDodatkowWyplacanegoWXProc" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia /świadczeń wypłacanych brutto bez dodatków przed zmniejszeniem /zawieszeniem z tytułu przychodów (wypłacanych w X%)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaZDodatkamiWyplacanegoWXProc" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia/ świadczeń wypłacanych brutto z dodatkami przed zmniejszeniem /zawieszeniem z tytułu przychodów (wypłacanych w X%)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaBezDodatkowWyplacanegoWXProcPoZmniejszeniu" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia brutto, bez dodatków, przed zmniejszeniem /zawieszeniem, wypłacanego w X% po zmniejszeniu z powodu przekroczenia 3 x min ER</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WysokoscSwiadczeniaZDodatkamiWyplacanegoWXProcPoZmniejszeniu" type="kom:KwotaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczenia brutto, z dodatkami, przed zmniejszeniem /zawieszeniem, wypłacanego w X% po zmniejszeniu z powodu przekroczenia 3 x min ER</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SkladnikSwiadczenia" type="kom:SkladnikSwiadczeniaTyp" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Składnik świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WyplacanyDodatek" type="kom:DodatekWyplacanyZeSwiadczeniemTyp" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Dodatek wypłacany wraz ze świadczeniem </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SwiadczenieWZbieguProszePrzekazywacTyp">
+		<xs:annotation>
+			<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'? </xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="NaRachunekPlZamieszkalegoWPolsce" type="kom:NaRachunekPlTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'w Polsce na rachunek bankowy', w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NaAdresPl" type="kom:NaAdresPlTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wnioskodawca zaznaczył we wniosku ERWD pole 'adres w Polsce', w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NaRachunekZagranica" type="kom:NaRachunekZagranicaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'za granicę – na rachunek bankowy (oprócz USA)'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NaRachunekUSA" type="kom:NaRachunekUSATyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'za granicę – do USA na rachunek bankowy'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NaRachunekPlZamieszkalegoZagranica" type="kom:NaRachunekPlZamieszkalegoZagranicaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'W Polsce na rachunek bankowy'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TrescK00Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K00</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneEwidencyjneWnioskuERWD" type="kom:DaneEwidencyjneWnioskuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane ewidencyjne wniosku ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WniosekERWD" type="kom:WniosekERWDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane wniosku ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK01Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K01</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PowodZadania" type="kom:PowodZadaniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Powód żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DzienLubOkresPotwierdzenia" type="kom:DzienLubOkresTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wymagany dzień albo okres potwierdzenia. Dzień, na który ORZ potrzebuje potwierdzenia występowania i wysokości świadczeń pozostających w zbiegu. Jeżeli konieczne jest potwierdzenie wysokości świadczeń w okresie – data jego początku, włącznie. Jeżeli konieczne jest potwierdzenie wysokości świadczeń w okresie – data jego końca, włącznie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK02Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K02</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (adresat odpowiedzi)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (nadawca odpowiedzi)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneWnioskodawcyERWD" type="kom:OsobaFizycznaZTelefonemTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane wnioskodawcy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DzienLubOkresPotwierdzenia" type="kom:DzienLubOkresTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dzień albo okres potwierdzenia. Dzień, na który ORŚ potwierdza występowanie i wysokości świadczeń pozostających w zbiegu. Jeżeli niezbędne jest potwierdzenie wysokości świadczeń w okresie – data jego początku, włącznie. Jeżeli niezbędne jest potwierdzenie wysokości świadczeń w okresie – data jego końca, włącznie.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrybPotwierdzenia" type="kom:DaneTrybuPotwierdzeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tryb potwierdzenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SwiadczeniaPozostajaceWZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Świadczenia pozostające w zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WniosekOPrzyznanieSwiadczenia" type="kom:WniosekOPrzyznanieSwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wniosek o przyznanie świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK03OdmowaTyp">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K03 - odmowa ustalenia zbiegu świadczenia z rentą rodzinną</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:TrescK03Typ">
+				<xs:sequence>
+					<xs:element name="StatusUstaleniaZbiegu" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Status ustalenia zbiegu</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:annotation>
+								<xs:documentation>Decyzja o ustaleniu bądź odmowie ustalenia zbiegu świadczenia z rentą rodzinną</xs:documentation>
+							</xs:annotation>
+							<xs:restriction base="kom:DecyzjaTyp">
+								<xs:enumeration value="Odmowa"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TrescK03Typ" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K03</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrybUstaleniaZbiegu" type="kom:TrybUstalaniaZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tryb ustalenia zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK03UstalenieTyp">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K03 - ustalenie zbiegu świadczenia z rentą rodzinną</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="kom:TrescK03Typ">
+				<xs:sequence>
+					<xs:element name="StatusUstaleniaZbiegu" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Status ustalenia zbiegu</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:annotation>
+								<xs:documentation>Decyzja o ustaleniu bądź odmowie ustalenia zbiegu świadczenia z rentą rodzinną</xs:documentation>
+							</xs:annotation>
+							<xs:restriction base="kom:DecyzjaTyp">
+								<xs:enumeration value="Ustalenie"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="UstalonyZbieg" type="kom:UstalonyZbiegTyp" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Ustalony zbieg</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="WysokoscSwiadczenPrzedUstaleniemZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Wysokość świadczeń przed ustaleniem zbiegu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="WysokoscSwiadczenPoUstaleniuZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Wysokość świadczeń po ustaleniu zbiegu</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TrescK04Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K04</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneWnioskodawcyERWD" type="kom:OsobaFizycznaZTelefonemTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane wnioskodawcy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PowodZmiany" type="kom:PowodZmianySwiadczeniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Powód zmiany</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SwiadczeniaPozostajaceWZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Świadczenia pozostające w zbiegu - stan po zmianie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK05Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K05</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat żądania)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NumerPonaglenia" type="kom:LiczbaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer ponaglenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneZadania" type="kom:DaneZadaniaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane żądania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescK06Typ">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu K06</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolORZ" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ ustalający zbieg świadczeń z rentą rodzinną (nadawca informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolORS" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Organ potencjalnie obsługujący świadczenie pozostające w zbiegu (adresat informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrybUstaleniaZbiegu" type="kom:TrybUstalaniaZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Tryb ustalenia zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneWnioskodawcyERWD" type="kom:OsobaFizycznaZTelefonemTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dane wnioskodawcy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PowodZmiany" type="kom:PowodZmianyZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Powód zmiany</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SwiadczeniaPrzedZmianaUstalonegoZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczeń przed zmianą ustalonego zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SwiadczeniaPoZmianieUstalonegoZbiegu" type="kom:SwiadczeniaPozostajaceWZbieguTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wysokość świadczeń po zmianie ustalonego  zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrescKPBTyp">
+		<xs:annotation>
+			<xs:documentation>Treść komunikatu KPB</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SymbolOrganuPotwierdzajacego" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol organu rentowego stwierdzającego przyjęcie lub odmowę przyjęcia komunikatu (nadawca informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SymbolOrganuOczekujacegoPotwierdzenia" type="kom:OrganRentowyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Symbol organu rentowego oczekującego na przyjęcie lub odmowę przyjęcia komunikatu (adresat informacji)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DecyzjaPrzyjmujacego" type="kom:DecyzjaPrzyjmujacegoTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Decyzja przyjmującego</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UstalonyZbiegTyp">
+		<xs:annotation>
+			<xs:documentation>Ustalony zbieg</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SygnaturaSprawy" type="kom:SygnaturaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sygnatura sprawy, w ramach której ORZ orzekł o ustaleniu zbiegu świadczeń z rentą rodzinną</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SygnaturaDecyzji" type="kom:SygnaturaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Sygnatura dokumentu decyzji w ramach którego ORZ orzekł o ustaleniu zbiegu świadczeń z rentą rodzinną</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataDecyzji" type="kom:DataTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data decyzji o ustaleniu zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PreferowanyWariantZbiegu" type="kom:WariantZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Preferowany wariant zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZastosowanyWariantZbiegu" type="kom:SymbolWariantuZbieguTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zastosowany wariant zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZastosowanyProcent" type="kom:ProcentTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zastosowany procent</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UUIDOdpowiedziK01">
+		<xs:annotation>
+			<xs:documentation>Unikalny identyfikator komunikatu, na który odpowiada niniejszy komunikat</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu odpowiedzi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K00">
+							<xs:annotation>
+								<xs:documentation>Informacja o wniosku o ustalenie zbiegu świadczeń z rentą rodzinna ERWD</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UUIDOdpowiedziK02">
+		<xs:annotation>
+			<xs:documentation>Unikalny identyfikator komunikatu, na który odpowiada niniejszy komunikat</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu odpowiedzi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K01">
+							<xs:annotation>
+								<xs:documentation>Żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UUIDOdpowiedziK05">
+		<xs:annotation>
+			<xs:documentation>Unikalny identyfikator komunikatu, na który odpowiada niniejszy komunikat</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu odpowiedzi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K01">
+							<xs:annotation>
+								<xs:documentation>Żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UUIDOdpowiedziKPB">
+		<xs:annotation>
+			<xs:documentation>Unikalny identyfikator komunikatu, na który odpowiada niniejszy komunikat</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UUID" type="kom:UUIDTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unikalny identyfikator komunikatu odpowiedzi</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Symbol" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>Symbol komunikatu</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="kom:SymbolKomunikatuTyp">
+						<xs:enumeration value="K00">
+							<xs:annotation>
+								<xs:documentation>Informacja o wniosku o ustalenie zbiegu świadczeń z rentą rodzinna ERWD</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K01">
+							<xs:annotation>
+								<xs:documentation>Żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K02">
+							<xs:annotation>
+								<xs:documentation>Odpowiedź na żądanie potwierdzenia występowania świadczeń i ich wysokości</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K03">
+							<xs:annotation>
+								<xs:documentation>Informacja o rozstrzygnięciu: odmowie lub ustaleniu zbiegu świadczenia z rentą rodzinną</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K04">
+							<xs:annotation>
+								<xs:documentation>Informacja o ustaniu prawa lub zmianie wysokości świadczeń</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K05">
+							<xs:annotation>
+								<xs:documentation>Ponaglenie dotyczące potwierdzenia występowania świadczeń w organie rentowym oraz jego wysokości</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K06">
+							<xs:annotation>
+								<xs:documentation>Informacja o zmianie ustalonego zbiegu świadczeń z rentą rodzinną</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WariantZbieguSwiadczenTyp">
+		<xs:annotation>
+			<xs:documentation>Wariant zbiegu świadczeń</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="NumerWariantu" type="kom:LiczbaTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer wariantu świadczenia</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CzyWariantWyplacany" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Informacja czy wariant jest wariantem wypłacanym</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Swiadczenie" type="kom:SwiadczeniePozostajaceWZbieguTyp" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Świadczenie pozostające w zbiegu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WniosekERWDTyp">
+		<xs:annotation>
+			<xs:documentation>Dane wskazane we wniosku o ustalenie zbiegu z rentą rodzinną ERWD</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DaneWnioskodawcy" type="kom:OsobaFizycznaZTelefonemTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wnioskodawca ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdresZamieszkania" type="kom:AdresZamieszkaniaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adres zamieszkania wnioskodawcy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdresOstatniegoZamieszkaniaPobytuWPolsce" type="kom:AdresZamieszkaniaBezPanstwaTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adres ostatniego miejsca zamieszkania w Polsce / adres miejsca pobytu wnioskodacy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdresDoKorespondencji" type="kom:AdresKorespondencyjnyTyp" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Adres do korespondencji wnioskodawcy ERWD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OswiadczeniaWnioskodawcy" type="kom:OswiadczeniaWnioskodawcyTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Oświadczenia wnioskodawcy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZakresWniosku" type="kom:ZakresWnioskuTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zakres wniosku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WniosekOPrzyznanieSwiadczeniaTyp">
+		<xs:annotation>
+			<xs:documentation>Wniosek o przyznanie świadczenia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CzyZlozonyWniosekRentaRodzinna" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Informacja, czy wnioskodawca złożył wniosek o rentę rodzinną</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CzyZlozonyWniosekInneSwiadczenie" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Informacja, czy wnioskodawca złożył wniosek o inne świadczenie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WnoszeOWyplacenie100ProcentTyp">
+		<xs:annotation>
+			<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD  dla zakresu 'wypłacanie w wysokości 100%'?</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="RentyRodzinnej" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'renty rodzinnej' dla zakresu 'wypłacanie w wysokości 100% (wskaż, które ze świadczeń w zbiegu mamy wypłacać w wysokości 100%)'? </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InnegoSwiadczenia" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'innego świadczenia…' dla zakresu 'wypłacanie w wysokości 100% (wskaż, które ze świadczeń w zbiegu mamy wypłacać w wysokości 100%)'? </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WyzszegoSwiadczenia" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'wyższego świadczenia' dla zakresu 'wypłacanie w wysokości 100% (wskaż, które ze świadczeń w zbiegu mamy wypłacać w wysokości 100%)'?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ZakresWnioskuTyp">
+		<xs:annotation>
+			<xs:documentation>Zakres wniosku</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WnoszeOWyplacenie100Procent" type="kom:WnoszeOWyplacenie100ProcentTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD  dla zakresu 'wypłacanie w wysokości 100%'? </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WnoszeOWyplacanieSwiadczenKtoreObecniePobieram" type="kom:TakNieTyp" minOccurs="0" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Czy wnioskodawca zaznaczył we wniosku ERWD pole 'wnoszę o wypłacanie świadczeń, które obecnie pobieram, … '?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SwiadczenieWZbieguProszePrzekazywac" type="kom:SwiadczenieWZbieguProszePrzekazywacTyp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Co wnioskodawca zaznaczył we wniosku ERWD w sekcji 'Świadczenie wypłacane przez ZUS proszę przekazywać…'? </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:group name="NaAdreP1Wybor">
+		<xs:choice>
+			<xs:element name="Zamieszkania" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Adres zamieszkania</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OstatniegoMiejscaZamieszkaniaPobytu" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Adres ostatniego miejsca zamieszkania lub miejsca pobytu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DoKorespondencji" type="kom:TakNieTyp" minOccurs="1" maxOccurs="1" fixed="Tak">
+				<xs:annotation>
+					<xs:documentation>Adres do korespondencji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+</xs:schema>

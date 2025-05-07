@@ -1,0 +1,15 @@
+{
+  "Naglowek": {
+    "Symbol": "K01",
+    "WersjaSchematu": "1.2",
+    "UUID": "927DF246-742F-45c2-A7CB-C94DD93B920A",
+    "UUIDRK00": "A4232445-DADE-4763-A5A0-A5EB60F13339",
+    "Nadawca": "KRUS",
+    "Adresat": "BSM01"
+  },
+  "Tresc": {
+    "SymbolORZ": "KRUS",
+    "SymbolORS": "BSM01",
+    "PowodZadania": "P1"
+  }
+}
