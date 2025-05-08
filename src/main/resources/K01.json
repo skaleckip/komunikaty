@@ -1,15 +1,24 @@
 {
-  "Naglowek": {
-    "Symbol": "K01",
-    "WersjaSchematu": "1.2",
-    "UUID": "927DF246-742F-45c2-A7CB-C94DD93B920A",
-    "UUIDRK00": "A4232445-DADE-4763-A5A0-A5EB60F13339",
-    "Nadawca": "KRUS",
-    "Adresat": "BSM01"
+  "DanePostepowania": {
+    "idPostepowania": "1002291",
+    "symbolJednostkiEpwd": "o10i03",
+    "idKomorkiZus": "o10i03-ser",
+    "IdCenRej": 49,
+    "RejestrTyp": "CRS"
   },
-  "Tresc": {
-    "SymbolORZ": "KRUS",
-    "SymbolORS": "BSM01",
-    "PowodZadania": "P1"
+  "Komunikat": {
+    "Naglowek": {
+      "Symbol": "K01",
+      "WersjaSchematu": "1.2",
+      "UUID": "927DF246-742F-45c2-A7CB-C94DD93B920A",
+      "UUIDRK00": "A4232445-DADE-4763-A5A0-A5EB60F13339",
+      "Nadawca": "KRUS",
+      "Adresat": "BSM01"
+    },
+    "Tresc": {
+      "SymbolORZ": "KRUS",
+      "SymbolORS": "BSM01",
+      "PowodZadania": "P1"
+    }
   }
 }

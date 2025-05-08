@@ -16,8 +16,10 @@ dependencies {
     // implementation("org.glassfish.jaxb:jaxb-xjc:3.0.2")
     // implementation("org.glassfish.jaxb:jaxb-core:3.0.2")
 
-    implementation("org.glassfish.jaxb:jaxb-runtime:3.0.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:2.18.3")
+    implementation("jakarta.json:jakarta.json-api:2.0.1")
+    implementation("org.eclipse.persistence:org.eclipse.persistence.moxy:4.0.6")
+    implementation("org.glassfish:jakarta.json:2.0.1")
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
