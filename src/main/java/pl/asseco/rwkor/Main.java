@@ -6,6 +6,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import org.eclipse.persistence.jaxb.UnmarshallerProperties;
 import pl.asseco.rwkor.komunikaty.KomunikatTyp;
+import pl.asseco.rwkor.komunikaty.ObjectFactory;
 
 import javax.xml.transform.stream.StreamSource;
 import java.io.BufferedReader;
@@ -84,7 +85,9 @@ public class Main {
         var jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         StringWriter stringWriter = new StringWriter();
-        jaxbMarshaller.marshal(komunikat, stringWriter);
+        // Dzięki tej linii jest koperta komunikatu
+        var kom = new ObjectFactory().createKomunikat(komunikat);
+        jaxbMarshaller.marshal(kom, stringWriter);
         return stringWriter.toString();
     }
 }
