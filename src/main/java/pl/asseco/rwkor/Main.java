@@ -5,9 +5,7 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import org.eclipse.persistence.jaxb.UnmarshallerProperties;
-import pl.asseco.rwkor.komunikaty.K00Typ;
-import pl.asseco.rwkor.komunikaty.K01Typ;
-import pl.asseco.rwkor.komunikaty.K02Typ;
+import pl.asseco.rwkor.komunikaty.*;
 
 import javax.xml.transform.stream.StreamSource;
 import java.io.InputStream;
@@ -18,7 +16,7 @@ public class Main {
         try {
             var input = Main.class.getResourceAsStream("/K01.json");
             var komunikat = parseK01FromE2JSON(input);
-            System.out.println(xmlK01(komunikat));
+            System.out.println(xml(komunikat.getValue().komunikat));
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
@@ -54,35 +52,12 @@ public class Main {
         return jaxbUnmarshaller.unmarshal(source, KomunikatE2K02Typ.class);
     }
 
-    @SuppressWarnings("unused")
-    private static String xmlK00(JAXBElement<KomunikatE2K00Typ> komunikatE2) throws JAXBException {
-        var jaxbContext = JAXBContext.newInstance(K00Typ.class);
+    private static String xml(KomunikatTyp komunikat) throws JAXBException {
+        var jaxbContext = JAXBContext.newInstance(KomunikatTyp.class);
         var jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        var komunikatHUB = komunikatE2.getValue().komunikat;
         StringWriter stringWriter = new StringWriter();
-        jaxbMarshaller.marshal(komunikatHUB, stringWriter);
-        return stringWriter.toString();
-    }
-
-    private static String xmlK01(JAXBElement<KomunikatE2K01Typ> komunikatE2) throws JAXBException {
-        var jaxbContext = JAXBContext.newInstance(K01Typ.class);
-        var jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        var komunikatHUB = komunikatE2.getValue().komunikat;
-        StringWriter stringWriter = new StringWriter();
-        jaxbMarshaller.marshal(komunikatHUB, stringWriter);
-        return stringWriter.toString();
-    }
-
-    @SuppressWarnings("unused")
-    private static String xmlK02(JAXBElement<KomunikatE2K02Typ> komunikatE2) throws JAXBException {
-        var jaxbContext = JAXBContext.newInstance(K02Typ.class);
-        var jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        var komunikatHUB = komunikatE2.getValue().komunikat;
-        StringWriter stringWriter = new StringWriter();
-        jaxbMarshaller.marshal(komunikatHUB, stringWriter);
+        jaxbMarshaller.marshal(komunikat, stringWriter);
         return stringWriter.toString();
     }
 }
